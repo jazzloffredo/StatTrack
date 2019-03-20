@@ -5,14 +5,17 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule
+    NgxSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
