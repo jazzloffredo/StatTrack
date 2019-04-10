@@ -21,6 +21,8 @@ $primary: $purple;
 $link: $pink;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
+$input-focus-border-color: $purple;
+$input-focus-box-shadow-color: rgba($purple, 0.25);
 
 // Update some of Bulma's component variables
 $body-background-color: $beige-lighter;
@@ -33,6 +35,11 @@ $navbar-item-active-color: $purple;
 $navbar-item-hover-color: $purple;
 $navbar-dropdown-item-hover-color: $purple;
 $navbar-dropdown-arrow: $purple;
+
+// Custom Styles
+.has-text-purple {
+    color: $purple;
+}
 
 // Import only what you need from Bulma
 @import '../node_modules/bulma/sass/utilities/_all.sass';

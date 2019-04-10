@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 
 import { NgxSpinnerModule } from 'ngx-spinner';
 
+
 @NgModule({
   declarations: [
     AppComponent
