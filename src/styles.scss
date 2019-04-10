@@ -1,1 +1,50 @@
 /* You can add global styles to this file, and also import other style files */
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700');
+
+// Set your brand colors
+$purple: #512888;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+
+// Update Bulma's global variables
+$family-sans-serif: "Nunito", sans-serif;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+$input-focus-border-color: $purple;
+$input-focus-box-shadow-color: rgba($purple, 0.25);
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Update navbar styling
+$navbar-item-active-color: $purple;
+$navbar-item-hover-color: $purple;
+$navbar-dropdown-item-hover-color: $purple;
+$navbar-dropdown-arrow: $purple;
+
+// Custom Styles
+.has-text-purple {
+    color: $purple;
+}
+
+// Import only what you need from Bulma
+@import '../node_modules/bulma/sass/utilities/_all.sass';
+@import '../node_modules/bulma/sass/base/_all.sass';
+@import '../node_modules/bulma/sass/components/_all.sass';
+@import '../node_modules/bulma/sass/elements/_all.sass';
+@import '../node_modules/bulma/sass/grid/_all.sass';
+@import '../node_modules/bulma/sass/layout/_all.sass';
