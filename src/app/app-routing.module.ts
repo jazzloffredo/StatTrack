@@ -7,8 +7,17 @@ const routes: Routes = [
     loadChildren: './modules/authentication/authentication.module#AuthenticationModule'
   },
   {
+    path: 'error',
+    loadChildren: './modules/error/error.module#ErrorModule'
+  },
+  {
     path: '',
     redirectTo: '',
+    pathMatch: 'full'
+  },
+  {
+    path: '**',
+    redirectTo: 'error',
     pathMatch: 'full'
   }
 ];
