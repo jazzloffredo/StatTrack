@@ -22,12 +22,12 @@
                               </span>
                           </div>
                       </div>
-                      <button class="button is-rounded is-fullwidth is-primary">Login</button>
+                      <button class="button is-rounded is-fullwidth is-primary" [disabled]="loginForm.invalid">Login</button>
                   </form>
               </div>
               <p>
                   <a href="../" class="has-text-black" [routerLink]="['/auth/register']"><strong>Sign Up</strong></a> &nbsp;·&nbsp;
-                  <a href="../" class="has-text-black"><strong>Forgot Password?</strong></a>
+                  <a href="../" class="has-text-black" [routerLink]="['/auth/reset-password']"><strong>Forgot Password?</strong></a>
               </p>
           </div>
       </div>

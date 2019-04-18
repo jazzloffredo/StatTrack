@@ -3,6 +3,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { NewUser } from '../models/user/new-user';
 import { RegisteredUser } from '../models/user/registered-user';
+import { UpdateUser } from '../models/user/update-user';
 
 import { API, HEADERS } from 'src/environments/environment';
 
@@ -20,6 +21,11 @@ export class AuthService {
 
   handleRegistrationError(error: HttpErrorResponse) {
     console.log('An error occurred, here is the tea sis: ' + error);
+  }
+
+  updatePassword(username: string, password: string) {
+    const updateUser = new UpdateUser(username, password);
+    return this.http.patch(API + '/user/updatePassword', updateUser, HEADERS);
   }
 
   set isLoggedIn(value: boolean) {
