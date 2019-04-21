@@ -40,6 +40,7 @@ export class LoginComponent implements OnDestroy {
       .subscribe(() => {
         this.loginForm.reset();
         this.usernameOrPasswordIncorrect = false;
+        this.authService.setIsLoggedIn(true);
         this.router.navigate(['/../../'], {relativeTo: this.curRoute});
         this.spinner.hide();
       }, (err: HttpErrorResponse) => {
@@ -48,10 +49,6 @@ export class LoginComponent implements OnDestroy {
           this.usernameOrPasswordIncorrect = true;
         }
       });
-
-      if (!this.usernameOrPasswordIncorrect) {
-        this.authService.isLoggedIn = true;
-      }
     }
   }
 

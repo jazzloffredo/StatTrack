@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 import { NewUser } from '../models/user/new-user';
 import { LoginUser } from '../models/user/login-user';
@@ -13,6 +14,10 @@ import { API, HEADERS } from 'src/environments/environment';
 })
 export class AuthService {
 
+  private isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(
+    sessionStorage.getItem('isLoggedIn') === 'true'
+  );
+
   constructor(private http: HttpClient) { }
 
   registerUser(firstName: string, lastName: string, username: string, email: string, password: string) {
@@ -25,9 +30,12 @@ export class AuthService {
     return this.http.post(API + '/user/attemptLogin', loginUser, HEADERS);
   }
 
-  set isLoggedIn(value: boolean) { }
+  setIsLoggedIn(isLoggedIn: boolean) {
+    sessionStorage.setItem('isLoggedIn', String(isLoggedIn));
+    this.isLoggedIn.next(isLoggedIn);
+  }
 
-  get isLoggedIn(): boolean {
-    return this.isLoggedIn;
+  getIsLoggedIn(): Observable<boolean> {
+    return this.isLoggedIn.asObservable();
   }
 }
