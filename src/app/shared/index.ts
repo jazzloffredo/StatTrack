@@ -1,5 +1,7 @@
 // User Classes
-export * from './models/user/user';
+export * from './models/user/registered-user';
+export * from './models/user/login-user';
+export * from './models/user/new-user';
 
 // Season Classes
 export * from './models/season/season';

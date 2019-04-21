@@ -1,7 +1,26 @@
+<section>
+    <!-- MODAL CONTENT -->
+    <div [ngClass]="modalClass">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <section class="modal-card-body">
+                <p class="has-text-centered">You have successfully registered for StatTrackDB!</p>
+            </section>
+            <footer class="modal-card-foot justify-center">
+                <button class="button is-success" (click)="hideRegisterSuccessPopup()">
+                    <span class="icon is-small is-center">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </button>
+            </footer>
+        </div>
+    </div>
+</section>
 <section class="hero is-fullheight-with-navbar">
     <div class="hero-body">
         <div class="container">
             <div class="column is-6 is-offset-3">
+                <!-- FORM CONTENT-->
                 <h3 class="title has-text-centered has-text-black">Sign Up</h3>
                 <div class="box">
                     <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
@@ -35,6 +54,9 @@
                                     <i class="fas fa-user-tag"></i>
                                 </span>
                             </div>
+                            <div class="has-text-danger add-top-margin" *ngIf="usernameExists">
+                                Username is taken.
+                            </div>
                         </div>
 
                         <div class="field">
@@ -45,8 +67,11 @@
                                     <i class="fas fa-envelope"></i>
                                 </span>
                             </div>
+                            <div class="has-text-danger add-top-margin" *ngIf="emailExists">
+                                Email already exists in system.
+                            </div>
                         </div>
-                        <div [formGroup]="passwordForm">
+                        <div class="field">
                             <div class="field">
                                 <label class="label">Password</label>
                                 <div class="control has-icons-left">
@@ -67,18 +92,22 @@
                                         <i class="fas fa-lock"></i>
                                     </span>
                                 </div>
-                                <div class="has-text-danger add-top-margin" *ngIf="passwordForm.errors?.matchesPassword">
+                                <div class="has-text-danger add-top-margin"
+                                    *ngIf="registerForm.errors?.matchesPassword">
                                     Passwords do not match.
                                 </div>
                             </div>
                         </div>
 
-                        <button class="button add-top-margin is-rounded is-fullwidth is-primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+                        <button class="button add-top-margin is-rounded is-fullwidth is-primary" type="submit"
+                            [disabled]="registerForm.invalid">Register</button>
                     </form>
                 </div>
                 <p class="has-text-centered">
-                    <a href="../" class="has-text-black" [routerLink]="['/auth/login']"><strong>Sign-In</strong></a> &nbsp;·&nbsp;
-                    <a href="../" class="has-text-black"><strong>Forgot Password?</strong></a>
+                    <a href="../" class="has-text-black" [routerLink]="['/auth/login']"><strong>Sign-In</strong></a>
+                    &nbsp;·&nbsp;
+                    <a href="../" class="has-text-black" [routerLink]="['/auth/reset-password']"><strong>Forgot
+                            Password?</strong></a>
                 </p>
             </div>
         </div>

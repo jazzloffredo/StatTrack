@@ -56,11 +56,14 @@
     <div class="navbar-end">
       <div class="navbar-item">
         <div class="buttons">
-          <a class="button is-primary" [routerLink]="['/auth/register']">
+          <a class="button is-primary" *ngIf="!displayLogout" [routerLink]="['/auth/register']">
             <strong>Sign up</strong>
           </a>
-          <a class="button is-light" [routerLink]="['/auth/login']">
+          <a class="button is-light" *ngIf="!displayLogout" [routerLink]="['/auth/login']">
             Log in
+          </a>
+          <a class="button is-primary" *ngIf="displayLogout" [routerLink]="['']" (click)="logout()">
+            <strong>Log out</strong>
           </a>
         </div>
       </div>

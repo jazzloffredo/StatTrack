@@ -1,3 +1,5 @@
+import { HttpHeaders } from '@angular/common/http';
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
@@ -5,6 +7,10 @@
 export const environment = {
   production: false
 };
+
+export const API = 'https://stattrackapi-dev.herokuapp.com';
+// export const API = 'http://localhost:3000';
+export const HEADERS = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
 /*
  * For easier debugging in development mode, you can import the following file

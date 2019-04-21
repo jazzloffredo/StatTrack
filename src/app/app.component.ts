@@ -3,7 +3,7 @@ import {
   Router,
   Event as RouterEvent,
   NavigationEnd
-} from '@angular/router'
+} from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -11,15 +11,15 @@ import { NgxSpinnerService } from 'ngx-spinner';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'StatTrack';
   loadingApp = true;
 
   constructor(private router: Router,
               private spinner: NgxSpinnerService) {
     this.router.events.subscribe((event: RouterEvent) => {
-      this._navigationInterceptor(event)
-    })
+      this._navigationInterceptor(event);
+    });
   }
 
   ngOnInit() {
