@@ -1,35 +1,42 @@
 <section class="hero is-fullheight-with-navbar">
-  <div class="hero-body">
-      <div class="container has-text-centered">
-          <div class="column is-4 is-offset-4">
-              <h3 class="title has-text-black">Login</h3>
-              <div class="box">
-                  <form>
-                      <div class="field">
-                          <div class="control has-icons-left">
-                              <input class="input is-medium" type="email" placeholder="email" autofocus="">
-                              <span class="icon is-small is-left">
-                                <i class="fas fa-envelope"></i>
-                              </span>
-                          </div>
-                      </div>
+    <div class="hero-body">
+        <div class="container has-text-centered">
+            <div class="column is-4 is-offset-4">
+                <h3 class="title has-text-black">Login</h3>
+                <div class="box">
+                    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                        <div class="field">
+                            <div class="control has-icons-left">
+                                <input class="input is-medium" type="text" placeholder="username" autofocus=""
+                                    formControlName="username">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-user-tag"></i>
+                                </span>
+                            </div>
+                        </div>
 
-                      <div class="field">
-                          <div class="control has-icons-left">
-                              <input class="input is-medium" type="password" placeholder="password">
-                              <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                              </span>
-                          </div>
-                      </div>
-                      <button class="button is-rounded is-fullwidth is-primary" [disabled]="loginForm.invalid">Login</button>
-                  </form>
-              </div>
-              <p>
-                  <a href="../" class="has-text-black" [routerLink]="['/auth/register']"><strong>Sign Up</strong></a> &nbsp;·&nbsp;
-                  <a href="../" class="has-text-black" [routerLink]="['/auth/reset-password']"><strong>Forgot Password?</strong></a>
-              </p>
-          </div>
-      </div>
-  </div>
+                        <div class="field">
+                            <div class="control has-icons-left">
+                                <input class="input is-medium" type="password" placeholder="password"
+                                    formControlName="password">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </div>
+                            <div class="has-text-danger add-top-margin" *ngIf="usernameOrPasswordIncorrect">
+                                Incorrect username or password.
+                            </div>
+                        </div>
+                        <button class="button is-rounded is-fullwidth is-primary"
+                            [disabled]="loginForm.invalid">Login</button>
+                    </form>
+                </div>
+                <p>
+                    <a href="../" class="has-text-black" [routerLink]="['/auth/register']"><strong>Sign Up</strong></a>
+                    &nbsp;·&nbsp;
+                    <a href="../" class="has-text-black" [routerLink]="['/auth/reset-password']"><strong>Forgot Password?</strong></a>
+                </p>
+            </div>
+        </div>
+    </div>
 </section>

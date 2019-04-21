@@ -28,7 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   onSubmit() {
     if (this.resetForm.valid) {
-      this.authService.updatePassword(this.username, this.newPassword);
+      // this.authService.updatePassword(this.username, this.newPassword);
     }
   }
 

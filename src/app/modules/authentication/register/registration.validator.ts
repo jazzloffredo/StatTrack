@@ -2,10 +2,10 @@ import { FormGroup } from '@angular/forms';
 
 export class RegistrationValidator {
     static validate(registrationFormGroup: FormGroup) {
-        const password = registrationFormGroup.get('password').value;
-        const confirmPassword = registrationFormGroup.get('confirmPassword').value;
+        const password: string = registrationFormGroup.get('password').value;
+        const confirmPassword: string = registrationFormGroup.get('confirmPassword').value;
 
-        if (confirmPassword.length <= 0) {
+        if (!confirmPassword === null && confirmPassword.length <= 0) {
             return null;
         }
 
