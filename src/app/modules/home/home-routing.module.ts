@@ -5,12 +5,12 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
     {
-        path: 'landing',
+        path: '',
         component: HomeComponent
     },
     {
-        path: '',
-        redirectTo: 'landing',
+        path: '**',
+        redirectTo: '/error/404',
         pathMatch: 'full'
     }
 ];

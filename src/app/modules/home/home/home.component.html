@@ -9,11 +9,20 @@
         </div>
         <div class="header-buttons">
           <span class="control">
-            <a href="https://github.com/jazzloffredo/StatTrack" class="button is-primary">
+            <a href="https://github.com/jazzloffredo/StatTrack" class="button is-primary" target="_blank">
               <span class="icon">
                 <i class="fa fa-github"></i>
               </span>
               <span>Github</span>
+            </a>
+          </span>
+          <span class="control">
+            <a href="https://github.com/jazzloffredo/StatTrack/archive/prod.zip" class="button is-primary"
+              target="_blank">
+              <span class="icon">
+                <i class="fa fa-download"></i>
+              </span>
+              <span>Download</span>
             </a>
           </span>
           <span class="control">
@@ -25,19 +34,11 @@
             </a>
           </span>
           <span class="control">
-            <a class="button is-primary">
+            <a class="button is-primary" href="https://opensource.org/licenses/MIT" target="_blank">
               <span class="icon">
                 <i class="fa fa-check"></i>
               </span>
               <span>100% Free</span>
-            </a>
-          </span>
-          <span class="control">
-            <a href="https://github.com/jazzloffredo/StatTrack/archive/prod.zip" class="button is-primary">
-              <span class="icon">
-                <i class="fa fa-download"></i>
-              </span>
-              <span>Download</span>
             </a>
           </span>
         </div>
@@ -53,29 +54,54 @@
     <div class="hero-body">
       <div class="container">
         <div class="content">
-          <h4 class="title is-4 is-spaced">Overview</h4>
+          <h4 class="title is-4 is-spaced underlined">Overview</h4>
           <div class="main-text">
             <p>
               This project is a culmination of the knowledge we have gained throughout this semester, as well
-              as the inclusion of design and data structure aspects from previous courses. Our goal was to 
-              explore and implement various technologies/frameworks to expand our understandingof desiging and 
-              building a fully fledged, operational application. We set out to design a web application that 
-              would allow users to favorite and track specific sports teams and players while simultaneously
-              viewing aggregate historical statistic data.
+              as our attempt to include data structure and desing principles from previous courses. Our goal was to
+              explore and implement various technologies/frameworks to expand our understanding of building and
+              maintaining a fully fledged, operational application that utilizes database interactions.
             </p>
-          </div>
-          <div class="pre-wrapper">
-            <pre>
-    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mllis.&lt;/p&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
-  </pre>
+            <p>
+              We set out to design a web application that
+              would allow users to favorite and track specific sports teams and players while simultaneously
+              viewing aggregate historical statistic data. We were advised to limit our breadth of scope to just
+              one particular sport and league i.e. NCAAMB, MLB, NFL. Our initial database logic design assumed we
+              would be tracking historical and current data for NCAA football. As we began to delve further into
+              the project, we soon discovered that this would not be possible due to time constraints and a lack of
+              (free) readily accessible data. For this reason, we shifted our focus to tracking historical data of
+              the MLB back to the mid 1800s.
+            </p>
+            <p>
+              We were able to find a github repository that contained excel sheets with all of the data that we
+              hoped to incorporate. Unfortunately, the repository only contained seasonal data for each team and player
+              and we were unable to include per-game statistic data (a link to the data repository can be found
+              <a href="" target="_blank">here</a>). Cody Murrell wrote various VBA scripts that parsed the data files
+              and inserted the
+              data into MSSQL tables. Once the data was extracted, our database followed a similar pattern to the
+              initial proposal.
+              Once the database was initialized, we focused the implementation of various features including - user
+              interface design,
+              encrypted authentication, favoriting specific teams and players, sorting and displaying data, querying the
+              Twitter API, and managing a user-driven forum.
+            </p>
+            <p>
+              Under the "My Feed" tab, the user will find an automatically generated Twitter feed based on their
+              favorited teams
+              and players. We query the Twitter API for the most recent data pertaining to the users preferences. Under
+              the "Teams"
+              tab, the user will find a list of teams either having been disbanded, or still participating in the MLB.
+              If the user
+              clicks on a team, they will be redirected to a new page with specific information on that team. Similarly,
+              under
+              the "Players" tab, users will find a list of all players who have been signed to a MLB team. If the user
+              selects a
+              player, they will be redirected to a page containing player specific and seasonal information. For both of
+              the above
+              options, the user has the option to "star" a player signifying that they would like to track that entity.
+              They
+              then have the ability to quickly navigate to favorited teams or players.
+            </p>
           </div>
         </div>
       </div>
@@ -91,56 +117,47 @@
     <div class="hero-body">
       <div class="container">
         <div class="content">
-          <h4 class="title is-4">Installation</h4>
+          <h4 class="title is-4 underlined">Technical Description</h4>
           <div class="main-text">
-            <p> Nunc elementum cursus tincidunt. Praesent sit amet ex sapien. Curabitur auctor nunc at elit rutrum
-              vestibulum. Etiam at lacus ante. Phasellus scelerisque nibh id leo interdum, nec ultrices elit placerat.
-              Etiam molestie mi a volutpat ultricies. Morbi vel pellentesque enim, a blandit enim. Cras egestas sapien
-              felis, sit amet accumsan erat efficitur sed.</p>
-            <ul>
-              <li>Operating System x.x</li>
-              <li>Programming Language x.x</li>
-              <li>Module x.x</li>
-            </ul>
-            <p> Nunc elementum cursus tincidunt. Praesent sit amet ex sapien. Curabitur auctor nunc at elit rutrum
-              vestibulum. Etiam at lacus ante. Phasellus scelerisque nibh id leo interdum, nec ultrices elit placerat.
-              Etiam molestie mi a volutpat ultricies. Morbi vel pellentesque enim, a blandit enim. Cras egestas sapien
-              felis, sit amet accumsan erat efficitur sed. Nunc elementum cursus tincidunt. Praesent sit amet ex sapien.
-              Curabitur auctor nunc at elit rutrum vestibulum. Etiam at lacus ante. Phasellus scelerisque nibh id leo
-              interdum, nec ultrices elit placerat. Etiam molestie mi a volutpat ultricies. Morbi vel pellentesque enim,
-              a blandit enim. Cras egestas sapien felis, sit amet accumsan erat efficitur sed.</p>
-          </div>
-          <div class="columns is-multiline">
-            <div class="column is-6">
-              <div class="pre-wrapper">
-                <pre>
-        &lt;!DOCTYPE html&gt;
-        &lt;html&gt;
-        &lt;head&gt;
-        &lt;title&gt;Hello World&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mllis.&lt;/p&gt;
-        &lt;/body&gt;
-        &lt;/html&gt;
-      </pre>
-              </div>
-            </div>
-            <div class="column is-6">
-              <div class="pre-wrapper">
-                <pre>
-        &lt;!DOCTYPE html&gt;
-        &lt;html&gt;
-        &lt;head&gt;
-        &lt;title&gt;Hello World&lt;/title&gt;
-        &lt;/head&gt;
-        &lt;body&gt;
-        &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mllis.&lt;/p&gt;
-        &lt;/body&gt;
-        &lt;/html&gt;
-      </pre>
-              </div>
-            </div>
+            <p>
+              Below you will find a description of the system, including languages, tools, libraries and how each were
+              used.
+            </p>
+            <h6 class="title is-6">Languages</h6>
+            <p>
+              The entire front-end of the application was written using the <span class="pink">Angular</span> framework
+              (v7). Angular is
+              a <span class="pink">TypeScript</span> based front-end framework produced and maintained by Google.
+              TypeScript, also referred
+              to as ECMAScript6, is a superset of JavaScript, ECMAScript5. Angular also employs the use of
+              template-binded <span class="pink">HTML</span>
+              and <span class="pink">CSS</span> to develop web applications that are capable of running on various
+              systems. According to the Angular documentation,
+              "Angular combines declarative templates, dependency injection, end to end tooling, and integrated best
+              practices to solve
+              development challenges." Our application is currently being hosted on an AWS S3 bucket.
+            </p>
+            <p>
+              Furthermore, our middle-ground API was developed using the <span class="pink">NestJS</span> framework, a
+              TypeScript based
+              <span class="pink">Node.js</span> framework, similar to Angular. The purpose of the API was to bridge
+              the connection gap between the front-end application and the back-end database. The API is currently being
+              hosted on Heroku. The Angular application makes HTTP requests to the Heroku application
+              which then queries the database.
+            </p>
+            <p>
+              Finally, our database was written using the Microsoft <span class="pink">SQL</span> database language. We
+              used various VBA and shell scripts
+              to extract data from excel sheets and initialize our database. The database is currently being hosted on
+              Microsoft Azure with a backup server on AWS.
+            </p>
+            <h6 class="title is-6">Tools</h6>
+            <p>
+              We primarily used various hosting services that could handle the "dev ops" of our
+              app. At first, we attempted to use an <span class="pink">AWS EC2</span> compute engine running
+              Windows Server 2019 to host our database. After a slew of problems with the EC2 engine (and a lack of computational power), we decided it best to transfer
+              our database over to <span class="pink">Microsoft Azure</span>, utilizing their free student tier access.
+            </p>
           </div>
         </div>
       </div>
@@ -267,9 +284,10 @@
           <h4 class="title is-4">Contact</h4>
           <div class="main-text">
             <p>
-              Thank you for taking the time to visit our website. Please feel free to 
-              reach out to the email provided below with any inquiries. We plan to maintain
-              and support this application so that it may grow to become a fully functional product.
+              Thank you for taking the time to visit our website. Please feel free to
+              reach out to the email provided below with any inquiries.
+              <br />
+              We hope to maintain and support this application so that it may grow to become a fully functional product.
             </p>
             <p>Jazz Loffredo</p>
             <p>Email: <a>jloffredo@ksu.edu</a></p>
@@ -288,7 +306,7 @@
     <span class="icon">
       <i class="fa fa-github"></i>
     </span>
-    <p>template by <a>github.com/plasticneko</a></p>
+    <p>template by <a href="https://www.github.com/plasticneko">github.com/plasticneko</a></p>
   </div>
 </div>
 <!-- end of footer -->
