@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: './modules/error/error.module#ErrorModule'
   },
   {
+    path: 'home',
+    loadChildren: './modules/home/home.module#HomeModule'
+  },
+  {
     path: '',
     redirectTo: '',
     pathMatch: 'full'
