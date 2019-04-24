@@ -22,12 +22,12 @@ export class AuthService {
 
   registerUser(firstName: string, lastName: string, username: string, email: string, password: string) {
     const newUser = new NewUser(firstName, lastName, username, email, password);
-    return this.http.post(API + '/user/registerUser', newUser, HEADERS);
+    return this.http.post(API + '/auth/registerUser', newUser, HEADERS);
   }
 
   attemptLogin(username: string, password: string) {
     const loginUser = new LoginUser(username, password);
-    return this.http.post(API + '/user/attemptLogin', loginUser, HEADERS);
+    return this.http.post(API + '/auth/attemptLogin', loginUser, HEADERS);
   }
 
   setIsLoggedIn(isLoggedIn: boolean) {
