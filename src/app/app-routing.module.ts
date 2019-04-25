@@ -7,12 +7,20 @@ const routes: Routes = [
     loadChildren: './modules/authentication/authentication.module#AuthenticationModule'
   },
   {
+    path: 'home',
+    loadChildren: './modules/home/home.module#HomeModule'
+  },
+  {
+    path: 'teams',
+    loadChildren: './modules/team/team.module#TeamModule'
+  },
+  {
     path: 'error',
     loadChildren: './modules/error/error.module#ErrorModule'
   },
   {
     path: '',
-    redirectTo: '',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   {
