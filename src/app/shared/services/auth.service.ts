@@ -18,6 +18,10 @@ export class AuthService {
     sessionStorage.getItem('isLoggedIn') === 'true'
   );
 
+  private username: BehaviorSubject<string> = new BehaviorSubject<string>(
+    sessionStorage.getItem('username')
+  );
+
   constructor(private http: HttpClient) { }
 
   registerUser(firstName: string, lastName: string, username: string, email: string, password: string) {
@@ -37,5 +41,15 @@ export class AuthService {
 
   getIsLoggedIn(): Observable<boolean> {
     return this.isLoggedIn.asObservable();
+  }
+
+  setUsername(username: string) {
+    console.log(username);
+    sessionStorage.setItem('username', String(username));
+    this.username.next(username);
+  }
+
+  getUsername(): string {
+    return this.username.value;
   }
 }

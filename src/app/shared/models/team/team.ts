@@ -10,6 +10,7 @@ export class Team {
     winLossRatio: number;
     leagueWins: number;
     worldSeriesWins: number;
+    favorite = false;
 
     constructor(teamID: string,
                 teamName: string,

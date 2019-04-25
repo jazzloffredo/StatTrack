@@ -1,17 +1,17 @@
 <section class="section">
   <div class="columns is-gapless center">
     <div class="column is-narrow has-text-right is-size-5 vertical-center"><strong>Search: &nbsp;</strong></div>
-    <div class="column is-2 vertical-center"><input class="input is-focused is-small" type="text"
-        placeholder="Team Name"></div>
+    <div class="column is-2 vertical-center"><input #search class="input is-focused is-small" type="text"
+        placeholder="Team Name" (keyup)="onSearchChange(search.value)"></div>
     <div class="column is-narrow has-text-right is-size-6 vertical-center"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View:&nbsp;&nbsp;&nbsp;</strong></div>
     <div class="column control vertical-center">
       <label class="radio">
-        <input type="radio" name="view" checked>
+        <input type="radio" name="view" checked (click)="changeViewToAll()">
         All
       </label>
       &nbsp;
       <label class="radio">
-        <input type="radio" name="view">
+        <input type="radio" name="view" (click)="changeViewToFavorites()">
         Favorites
       </label>
     </div>
@@ -22,28 +22,39 @@
         <tr>
           <th mat-sort-header="id">Identifier</th>
           <th mat-sort-header="name">Team Name</th>
-          <th mat-sort-header="active" style="text-align: center">Active</th>
-          <th mat-sort-header="games">Games</th>
-          <th mat-sort-header="wins">Wins</th>
-          <th mat-sort-header="losses">Losses</th>
-          <th mat-sort-header="ratio">W/L Ratio</th>
-          <th mat-sort-header="leagueWins">League Titles</th>
-          <th mat-sort-header="seriesWins">World Series Banners</th>
-          <th mat-sort-header="favorite">Favorite</th>
+          <th mat-sort-header="active">&nbsp;&nbsp;&nbsp;Active</th>
+          <th mat-sort-header="games">&nbsp;&nbsp;&nbsp;Games</th>
+          <th mat-sort-header="wins">&nbsp;&nbsp;&nbsp;Wins</th>
+          <th mat-sort-header="losses">&nbsp;&nbsp;&nbsp;Losses</th>
+          <th mat-sort-header="ratio">&nbsp;&nbsp;&nbsp;W/L Ratio</th>
+          <th mat-sort-header="leagueWins">&nbsp;&nbsp;&nbsp;League Titles</th>
+          <th mat-sort-header="seriesWins">&nbsp;&nbsp;&nbsp;World Series Pennants</th>
+          <th mat-sort-header="favorite">&nbsp;&nbsp;&nbsp;Favorite</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let team of displayedTeams">
           <td>{{team.teamID}}</td>
           <td>{{team.teamName}}</td>
-          <td>{{team.isActive}}</td>
-          <td>{{team.totalGames}}</td>
-          <td>{{team.totalWins}}</td>
-          <td>{{team.totalLosses}}</td>
-          <td>{{team.winLossRatio}}</td>
-          <td>{{team.leagueWins}}</td>
-          <td>{{team.worldSeriesWins}}</td>
-          <td></td>
+          <td style="text-align: center;">{{team.isActive}}</td>
+          <td style="text-align: center;">{{team.totalGames}}</td>
+          <td style="text-align: center;">{{team.totalWins}}</td>
+          <td style="text-align: center;">{{team.totalLosses}}</td>
+          <td style="text-align: center;">{{team.winLossRatio}}</td>
+          <td style="text-align: center;">{{team.leagueWins}}</td>
+          <td style="text-align: center;">{{team.worldSeriesWins}}</td>
+          <td style="text-align: center;">
+            <button *ngIf="!team.favorite" class="button" (click)="favoriteTeam($event, team)">
+              <span class="icon is-small is-center">
+                  <i class="far fa-star"></i>
+              </span>
+            </button>
+            <button *ngIf="team.favorite" class="button" (click)="unFavoriteTeam($event, team)">
+                <span class="icon is-small is-center">
+                    <i class="fas fa-star"></i>
+                </span>
+              </button>
+          </td>
         </tr>
       </tbody>
     </table>

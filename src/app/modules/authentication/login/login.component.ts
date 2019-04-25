@@ -38,9 +38,10 @@ export class LoginComponent implements OnDestroy {
       this.authService.attemptLogin(this.username, this.password)
       .pipe(takeUntil(this.unsubscribe))
       .subscribe(() => {
-        this.loginForm.reset();
-        this.usernameOrPasswordIncorrect = false;
         this.authService.setIsLoggedIn(true);
+        this.authService.setUsername(this.username);
+        this.usernameOrPasswordIncorrect = false;
+        this.loginForm.reset();
         this.router.navigate(['/../../'], {relativeTo: this.curRoute});
         this.spinner.hide();
       }, (err: HttpErrorResponse) => {
