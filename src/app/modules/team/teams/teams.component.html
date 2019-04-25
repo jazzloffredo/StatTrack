@@ -1,0 +1,51 @@
+<section class="section">
+  <div class="columns is-gapless center">
+    <div class="column is-narrow has-text-right is-size-5 vertical-center"><strong>Search: &nbsp;</strong></div>
+    <div class="column is-2 vertical-center"><input class="input is-focused is-small" type="text"
+        placeholder="Team Name"></div>
+    <div class="column is-narrow has-text-right is-size-6 vertical-center"><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View:&nbsp;&nbsp;&nbsp;</strong></div>
+    <div class="column control vertical-center">
+      <label class="radio">
+        <input type="radio" name="view" checked>
+        All
+      </label>
+      &nbsp;
+      <label class="radio">
+        <input type="radio" name="view">
+        Favorites
+      </label>
+    </div>
+  </div>
+  <div>
+    <table matSort (matSortChange)="sortData($event)" class="table is-hoverable is-narrow is-striped is-bordered">
+      <thead>
+        <tr>
+          <th mat-sort-header="id">Identifier</th>
+          <th mat-sort-header="name">Team Name</th>
+          <th mat-sort-header="active" style="text-align: center">Active</th>
+          <th mat-sort-header="games">Games</th>
+          <th mat-sort-header="wins">Wins</th>
+          <th mat-sort-header="losses">Losses</th>
+          <th mat-sort-header="ratio">W/L Ratio</th>
+          <th mat-sort-header="leagueWins">League Titles</th>
+          <th mat-sort-header="seriesWins">World Series Banners</th>
+          <th mat-sort-header="favorite">Favorite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let team of displayedTeams">
+          <td>{{team.teamID}}</td>
+          <td>{{team.teamName}}</td>
+          <td>{{team.isActive}}</td>
+          <td>{{team.totalGames}}</td>
+          <td>{{team.totalWins}}</td>
+          <td>{{team.totalLosses}}</td>
+          <td>{{team.winLossRatio}}</td>
+          <td>{{team.leagueWins}}</td>
+          <td>{{team.worldSeriesWins}}</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

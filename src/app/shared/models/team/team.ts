@@ -1,19 +1,34 @@
 import { TeamSeason } from './team-season';
 
 export class Team {
-    name: string;
-    mascot: string;
-    yearEstablished: number;
-    yearEnd: number;
-    webPageLink: string;
+    teamID: string;
+    teamName: string;
+    isActive: string;
+    totalGames: number;
+    totalWins: number;
+    totalLosses: number;
+    winLossRatio: number;
+    leagueWins: number;
+    worldSeriesWins: number;
 
-    teamSeasons: TeamSeason[];
+    constructor(teamID: string,
+                teamName: string,
+                isActive: string,
+                totalGames: number,
+                totalWins: number,
+                totalLosses: number,
+                winLossRatio: number,
+                leagueWins: number,
+                worldSeriesWins: number) {
 
-    constructor(name: string, mascot: string, yearEstablished: number, yearEnd: number, webPageLink: string) {
-        this.name = name;
-        this.mascot = mascot;
-        this.yearEstablished = yearEstablished;
-        this.yearEnd = yearEnd;
-        this.webPageLink = webPageLink;
+        this.teamID = teamID;
+        this.teamName = teamName;
+        this.isActive = isActive;
+        this.totalGames = totalGames;
+        this.totalWins = totalWins;
+        this.totalLosses = totalLosses;
+        this.winLossRatio = winLossRatio;
+        this.leagueWins = leagueWins;
+        this.worldSeriesWins = worldSeriesWins;
     }
 }

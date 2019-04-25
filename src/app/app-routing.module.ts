@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './modules/authentication/authentication.module#AuthenticationModule'
   },
   {
+    path: 'teams',
+    loadChildren: './modules/team/team.module#TeamModule'
+  },
+  {
     path: 'error',
     loadChildren: './modules/error/error.module#ErrorModule'
   },
