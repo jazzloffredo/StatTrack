@@ -1,5 +1,3 @@
-import { TeamSeason } from './team-season';
-
 export class Team {
     teamID: string;
     teamName: string;

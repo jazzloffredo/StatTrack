@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: './modules/team/team.module#TeamModule'
   },
   {
+    path: 'players',
+    loadChildren: './modules/player/player.module#PlayerModule'
+  },
+  {
     path: 'error',
     loadChildren: './modules/error/error.module#ErrorModule'
   },

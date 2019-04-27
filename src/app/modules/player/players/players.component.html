@@ -1,0 +1,98 @@
+<section class="section">
+  <div class="columns is-gapless">
+    <div class="column is-narrow has-text-right is-size-5 vertical-center"><strong>Search: &nbsp;</strong></div>
+    <div class="column is-2 vertical-center"><input #search class="input is-focused is-small" type="text"
+        placeholder="Player Name" (keyup)="onSearchChange(search.value)">
+    </div>
+    <div class="column is-narrow has-text-right is-size-6 vertical-center">
+      <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last name begins with:&nbsp;&nbsp;&nbsp;</strong>
+    </div>
+    <div class="select is-purple is-small vertical-center">
+        <select #lastNameChar class="is-focused" (change)="onSelectChange(lastNameChar.value)">
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+          <option>D</option>
+          <option>E</option>
+          <option>F</option>
+          <option>G</option>
+          <option>H</option>
+          <option>I</option>
+          <option>J</option>
+          <option>K</option>
+          <option>L</option>
+          <option>M</option>
+          <option>N</option>
+          <option>O</option>
+          <option>P</option>
+          <option>Q</option>
+          <option>R</option>
+          <option>S</option>
+          <option>T</option>
+          <option>U</option>
+          <option>V</option>
+          <option>W</option>
+          <option>X</option>
+          <option>Y</option>
+          <option>Z</option>
+        </select>
+      </div>
+    <div class="column is-narrow has-text-right is-size-6 vertical-center">
+      <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;View:&nbsp;&nbsp;&nbsp;</strong>
+    </div>
+    <div class="column control vertical-center">
+      <label class="radio">
+        <input type="radio" name="view" checked (click)="changeViewToAll()">
+        All
+      </label>
+      &nbsp;
+      <label class="radio">
+        <input type="radio" name="view" (click)="changeViewToFavorites()">
+        Favorites
+      </label>
+    </div>
+  </div>
+  <div>
+    <table matSort (matSortChange)="sortData($event)" class="table is-hoverable is-narrow is-striped is-bordered">
+      <thead>
+        <tr>
+          <th mat-sort-header="lastName">Last Name</th>
+          <th mat-sort-header="firstName">First Name</th>
+          <th style="text-align: center;">Height</th>
+          <th style="text-align: center;">Games</th>
+          <th style="text-align: center;">Runs</th>
+          <th style="text-align: center;">Hits</th>
+          <th style="text-align: center;">RBIs</th>
+          <th style="text-align: center;">Homeruns</th>
+          <th style="text-align: center;">HRs Rank</th>
+          <th style="text-align: center;">Favorite</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let player of displayedPlayers">
+          <td>{{player.lastName}}</td>
+          <td>{{player.firstName}}</td>
+          <td style="text-align: center;">{{player.height}}</td>
+          <td style="text-align: center;">{{player.totalGames}}</td>
+          <td style="text-align: center;">{{player.totalRuns}}</td>
+          <td style="text-align: center;">{{player.totalHits}}</td>
+          <td style="text-align: center;">{{player.totalRBIs}}</td>
+          <td style="text-align: center;">{{player.totalHomeruns}}</td>
+          <td style="text-align: center;">{{player.totalHomerunsRank}}</td>
+          <td style="text-align: center;">
+            <button *ngIf="!player.favorite" class="button" (click)="favoritePlayer($event, player)">
+              <span class="icon is-small is-center">
+                <i class="far fa-star"></i>
+              </span>
+            </button>
+            <button *ngIf="player.favorite" class="button" (click)="unFavoritePlayer($event, player)">
+              <span class="icon is-small is-center">
+                <i class="fas fa-star"></i>
+              </span>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

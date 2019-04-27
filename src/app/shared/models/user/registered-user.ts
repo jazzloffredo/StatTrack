@@ -1,6 +1,5 @@
 import { Team } from '../team/team';
 import { Player } from '../player/player';
-import { TeamGame } from '../team/team-game';
 
 export class RegisteredUser {
     firstName: string;
@@ -9,7 +8,6 @@ export class RegisteredUser {
     email: string;
 
     userTeamFavorites: Team[];
-    userGameFavorites: TeamGame[];
     userPlayerFavorites: Player[];
 
     constructor(firstName: string, lastName: string, username: string, email: string) {
