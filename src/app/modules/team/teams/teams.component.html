@@ -28,14 +28,14 @@
           <th mat-sort-header="losses">&nbsp;&nbsp;&nbsp;Losses</th>
           <th mat-sort-header="ratio">&nbsp;&nbsp;&nbsp;W/L Ratio</th>
           <th mat-sort-header="leagueWins">&nbsp;&nbsp;&nbsp;League Titles</th>
-          <th mat-sort-header="seriesWins">&nbsp;&nbsp;&nbsp;World Series Pennants</th>
+          <th mat-sort-header="seriesWins">&nbsp;&nbsp;&nbsp;WS Pennants</th>
           <th mat-sort-header="favorite">&nbsp;&nbsp;&nbsp;Favorite</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let team of displayedTeams">
           <td>{{team.teamID}}</td>
-          <td>{{team.teamName}}</td>
+          <td><a class="is-primary" [routerLink]="['/teams', team.teamID]"><strong>{{team.teamName}}</strong></a></td>
           <td style="text-align: center;">{{team.isActive}}</td>
           <td style="text-align: center;">{{team.totalGames}}</td>
           <td style="text-align: center;">{{team.totalWins}}</td>

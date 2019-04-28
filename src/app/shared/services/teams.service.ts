@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Team } from '../models/team/team';
+import { TeamSeason } from '../models/team/team-season';
 import { UserFavoriteTeam } from '../models/team/user-favorite-team';
 import { API, HEADERS } from 'src/environments/environment';
 
@@ -15,6 +16,10 @@ export class TeamsService {
 
   retrieveAllTeams() {
     return this.http.get<Team[]>(API + '/team/retrieveAllTeams', HEADERS);
+  }
+
+  retrieveAllTeamSeasons(id: string) {
+    return this.http.get<TeamSeason[]>(API + '/team/retrieveAllTeamSeasons/' + id, HEADERS);
   }
 
   retrieveFavoriteTeamsForUser(username: string) {
