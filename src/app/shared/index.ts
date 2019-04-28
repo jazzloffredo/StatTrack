@@ -8,6 +8,8 @@ export * from './models/season/season';
 
 // Team Classes
 export * from './models/team/team';
+export * from './models/team/team-season';
+export * from './models/team/user-favorite-team';
 
 // Player Classes
 export * from './models/player/player';

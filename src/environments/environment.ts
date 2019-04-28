@@ -9,8 +9,8 @@ export const environment = {
 };
 
 // export const API = 'https://stattrack-test.herokuapp.com';
-// export const API = 'https://stattrackapi-dev.herokuapp.com';
-export const API = 'http://localhost:3000';
+export const API = 'https://stattrackapi-dev.herokuapp.com';
+// export const API = 'http://localhost:3000';
 export const HEADERS = { headers: new HttpHeaders({'Content-Type': 'application/json'})};
 
 /*

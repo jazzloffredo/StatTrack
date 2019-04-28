@@ -6,9 +6,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { TeamRoutingModule } from './team-routing.module';
 
 import { TeamsComponent } from './teams/teams.component';
+import { TeamComponent } from './team/team.component';
 
 @NgModule({
-  declarations: [TeamsComponent],
+  declarations: [TeamsComponent, TeamComponent],
   imports: [
     CommonModule,
     MatSortModule,
