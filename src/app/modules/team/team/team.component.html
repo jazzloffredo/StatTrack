@@ -1,45 +1,46 @@
 <section class="section">
   <div>
-    <button class="button is-large" (click)="gotoTeams()">
-      <span class="icon is-large is-center">
-        <i class="fas fa-arrow-alt-circle-left"></i>
-      </span>
-    </button>
+      <button class="button is-large" (click)="gotoTeams()">
+        <span class="icon is-large is-center">
+          <i class="fas fa-arrow-alt-circle-left"></i>
+        </span>
+      </button>
+    <span class="is-size-5"><strong>&nbsp;&nbsp;&nbsp;{{teamSeasons[0]?.teamName}}</strong></span>
   </div>
   <div>
-      <table matSort (matSortChange)="sortData($event)" class="table is-hoverable is-narrow is-striped is-bordered">
-          <thead>
-            <tr>
-              <th mat-sort-header="year">Year</th>
-              <th>League</th>
-              <th mat-sort-header="wins">&nbsp;&nbsp;&nbsp;Wins</th>
-              <th mat-sort-header="losses">&nbsp;&nbsp;&nbsp;Losses</th>
-              <th mat-sort-header="ratio">&nbsp;&nbsp;&nbsp;W/L Ratio</th>
-              <th mat-sort-header="pennant">&nbsp;&nbsp;&nbsp;WS Pennant</th>
-              <th mat-sort-header="scored">&nbsp;&nbsp;&nbsp;R Scored</th>
-              <th mat-sort-header="against">&nbsp;&nbsp;&nbsp;R Against</th>
-              <th>2B/3B/HRs</th>
-              <th mat-sort-header="allowed">&nbsp;&nbsp;&nbsp;Hits Allowed</th>
-              <th mat-sort-header="errors">&nbsp;&nbsp;&nbsp;Errors</th>
-              <th mat-sort-header="attendance">&nbsp;&nbsp;&nbsp;Attendance</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let season of displayedTeamSeasons">
-              <td>{{season.year}}</td>
-              <td style="text-align: center;">{{season.league}}</td>
-              <td style="text-align: center;">{{season.wins}}</td>
-              <td style="text-align: center;">{{season.losses}}</td>
-              <td style="text-align: center;">{{season.winLossRatio}}</td>
-              <td style="text-align: center;">{{season.wsWinner}}</td>
-              <td style="text-align: center;">{{season.runsScored}}</td>
-              <td style="text-align: center;">{{season.runsAgainst}}</td>
-              <td style="text-align: center;">{{season.hittingStats}}</td>
-              <td style="text-align: center;">{{season.hitsAllowed}}</td>
-              <td style="text-align: center;">{{season.errors}}</td>
-              <td style="text-align: center;">{{season.homeAttendance}}</td>
-            </tr>
-          </tbody>
-        </table>
+    <table matSort (matSortChange)="sortData($event)" class="table is-hoverable is-narrow is-striped is-bordered">
+      <thead>
+        <tr>
+          <th mat-sort-header="year">Year</th>
+          <th>League</th>
+          <th mat-sort-header="wins">&nbsp;&nbsp;&nbsp;Wins</th>
+          <th mat-sort-header="losses">&nbsp;&nbsp;&nbsp;Losses</th>
+          <th mat-sort-header="ratio">&nbsp;&nbsp;&nbsp;W/L Ratio</th>
+          <th mat-sort-header="pennant">&nbsp;&nbsp;&nbsp;WS Pennant</th>
+          <th mat-sort-header="scored">&nbsp;&nbsp;&nbsp;R Scored</th>
+          <th mat-sort-header="against">&nbsp;&nbsp;&nbsp;R Against</th>
+          <th>2B/3B/HRs</th>
+          <th mat-sort-header="allowed">&nbsp;&nbsp;&nbsp;Hits Allowed</th>
+          <th mat-sort-header="errors">&nbsp;&nbsp;&nbsp;Errors</th>
+          <th mat-sort-header="attendance">&nbsp;&nbsp;&nbsp;Attendance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let season of displayedTeamSeasons">
+          <td>{{season.year}}</td>
+          <td style="text-align: center;">{{season.league}}</td>
+          <td style="text-align: center;">{{season.wins}}</td>
+          <td style="text-align: center;">{{season.losses}}</td>
+          <td style="text-align: center;">{{season.winLossRatio}}</td>
+          <td style="text-align: center;">{{season.wsWinner}}</td>
+          <td style="text-align: center;">{{season.runsScored}}</td>
+          <td style="text-align: center;">{{season.runsAgainst}}</td>
+          <td style="text-align: center;">{{season.hittingStats}}</td>
+          <td style="text-align: center;">{{season.hitsAllowed}}</td>
+          <td style="text-align: center;">{{season.errors}}</td>
+          <td style="text-align: center;">{{season.homeAttendance}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>

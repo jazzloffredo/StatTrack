@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Sort } from '@angular/material';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { zip } from 'rxjs';
+import { Subject, zip } from 'rxjs';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { PlayersService } from 'src/app/shared/services/players.service';
 import { Player } from 'src/app/shared';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-players',
@@ -13,6 +14,7 @@ import { Player } from 'src/app/shared';
   styleUrls: ['./players.component.scss']
 })
 export class PlayersComponent implements OnInit {
+  private unsubscribe: Subject<boolean> = new Subject<boolean>();
 
   players: Player[] = [];
   favoritePlayerIDs: string[] = [];
@@ -32,7 +34,9 @@ export class PlayersComponent implements OnInit {
     zip(
       this.playersService.retrieveAllPlayersGivenChar('A'),
       this.playersService.retrieveFavoritePlayersForUser(username)
-    ).subscribe(([allPlayers, favoriteIDs]) => {
+    )
+    .pipe(takeUntil(this.unsubscribe))
+    .subscribe(([allPlayers, favoriteIDs]) => {
       for (const curRow of allPlayers) {
         this.players.push(curRow);
       }
@@ -64,7 +68,9 @@ export class PlayersComponent implements OnInit {
     zip(
       this.playersService.retrieveAllPlayersGivenChar(lastNameChar),
       this.playersService.retrieveFavoritePlayersForUser(username)
-    ).subscribe(([allPlayers, favoriteIDs]) => {
+    )
+    .pipe(takeUntil(this.unsubscribe))
+    .subscribe(([allPlayers, favoriteIDs]) => {
       for (const curRow of allPlayers) {
         this.players.push(curRow);
       }
@@ -87,6 +93,7 @@ export class PlayersComponent implements OnInit {
     }
 
     this.playersService.addFavoritePlayerForUser(this.authService.getUsername(), player.playerID)
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe((success) => {
         if (success) {
           if (event.target.nodeName === 'BUTTON') {
@@ -113,6 +120,7 @@ export class PlayersComponent implements OnInit {
     }
 
     this.playersService.deleteFavoritePlayerForUser(this.authService.getUsername(), player.playerID)
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe((success) => {
         if (success) {
           if (event.target.nodeName === 'BUTTON') {

@@ -1,4 +1,5 @@
 export class TeamSeason {
+    teamName: string;
     year: number;
     league: string;
     wins: number;
@@ -12,7 +13,8 @@ export class TeamSeason {
     errors: number;
     homeAttendance: number;
 
-    constructor(year: number,
+    constructor(teamName: string,
+                year: number,
                 league: string,
                 wins: number,
                 losses: number,
@@ -25,6 +27,7 @@ export class TeamSeason {
                 errors: number,
                 homeAttendance: number) {
 
+        this.teamName = teamName;
         this.year = year;
         this.league = league;
         this.wins = wins;

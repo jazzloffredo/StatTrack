@@ -1,20 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Sort } from '@angular/material';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Subject } from 'rxjs';
 
 import { TeamSeason } from '../../../shared/models/team/team-season';
 import { TeamsService } from 'src/app/shared/services/teams.service';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-team',
   templateUrl: './team.component.html',
   styleUrls: ['./team.component.scss']
 })
-export class TeamComponent implements OnInit {
+export class TeamComponent implements OnInit, OnDestroy {
+  private unsubscribe: Subject<boolean> = new Subject<boolean>();
 
-  teamSeasons: TeamSeason[];
-  displayedTeamSeasons: TeamSeason[];
+  teamSeasons: TeamSeason[] = [];
+  displayedTeamSeasons: TeamSeason[] = [];
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -25,6 +28,7 @@ export class TeamComponent implements OnInit {
     this.spinner.show();
     const id = this.route.snapshot.paramMap.get('id');
     this.teamsService.retrieveAllTeamSeasons(id)
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe((data) => {
         for (const row of data) {
           row.winLossRatio = Number(row.winLossRatio).toFixed(3);
@@ -33,6 +37,11 @@ export class TeamComponent implements OnInit {
         this.displayedTeamSeasons = data;
         this.spinner.hide();
       });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.next(true);
+    this.unsubscribe.complete();
   }
 
   sortData(sort: Sort) {

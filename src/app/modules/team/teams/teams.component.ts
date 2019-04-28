@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Sort } from '@angular/material';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { zip } from 'rxjs';
+import { Subject, zip } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { TeamsService } from 'src/app/shared/services/teams.service';
@@ -12,7 +13,9 @@ import { Team } from 'src/app/shared';
   templateUrl: './teams.component.html',
   styleUrls: ['./teams.component.scss']
 })
-export class TeamsComponent implements OnInit {
+export class TeamsComponent implements OnInit, OnDestroy {
+  private unsubscribe: Subject<boolean> = new Subject<boolean>();
+
   teams: Team[] = [];
   favoriteTeamIDs: string[] = [];
   displayedTeams: Team[] = [];
@@ -31,7 +34,9 @@ export class TeamsComponent implements OnInit {
     zip(
       this.teamsService.retrieveAllTeams(),
       this.teamsService.retrieveFavoriteTeamsForUser(username)
-    ).subscribe(([allTeams, favoriteIDs]) => {
+    )
+    .pipe(takeUntil(this.unsubscribe))
+    .subscribe(([allTeams, favoriteIDs]) => {
       for (const curRow of allTeams) {
         this.teams.push(curRow);
       }
@@ -42,6 +47,11 @@ export class TeamsComponent implements OnInit {
 
       this.spinner.hide();
     });
+  }
+
+  ngOnDestroy() {
+    this.unsubscribe.next(true);
+    this.unsubscribe.complete();
   }
 
   markFavoriteTeams() {
@@ -65,6 +75,7 @@ export class TeamsComponent implements OnInit {
     }
 
     this.teamsService.addFavoriteTeamForUser(this.authService.getUsername(), team.teamID)
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe((success) => {
         if (success) {
           if (event.target.nodeName === 'BUTTON') {
@@ -91,6 +102,7 @@ export class TeamsComponent implements OnInit {
     }
 
     this.teamsService.deleteFavoriteTeamForUser(this.authService.getUsername(), team.teamID)
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe((success) => {
         if (success) {
           if (event.target.nodeName === 'BUTTON') {
