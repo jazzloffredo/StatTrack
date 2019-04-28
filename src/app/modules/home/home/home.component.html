@@ -54,7 +54,7 @@
     <div class="hero-body">
       <div class="container">
         <div class="content">
-          <h4 class="title is-4 is-spaced underlined">Overview</h4>
+          <h4 class="title is-4 is-spaced">Overview</h4>
           <div class="main-text">
             <p>
               This project is a culmination of the knowledge we have gained throughout this semester, as well
@@ -117,7 +117,7 @@
     <div class="hero-body">
       <div class="container">
         <div class="content">
-          <h4 class="title is-4 underlined">Technical Description</h4>
+          <h4 class="title is-4">Technical Description</h4>
           <div class="main-text">
             <p>
               Below you will find a description of the system, including languages, tools, libraries and how each were
@@ -155,8 +155,40 @@
             <p>
               We primarily used various hosting services that could handle the "dev ops" of our
               app. At first, we attempted to use an <span class="pink">AWS EC2</span> compute engine running
-              Windows Server 2019 to host our database. After a slew of problems with the EC2 engine (and a lack of computational power), we decided it best to transfer
+              Windows Server 2019 to host our database. After a slew of problems with the EC2 engine (and a lack of
+              computational power), we decided it best to transfer
               our database over to <span class="pink">Microsoft Azure</span>, utilizing their free student tier access.
+              To host our Angular application, we took advantage of an <span class="pink">AWS S3</span> bucket. It was
+              also
+              recommended to us that we look into <span class="pink">Heroku</span> for hosting our API. Heroku proved to
+              be
+              simple to set up and easy to integrate with Github. Our website was designed using the <span
+                class="pink">Bulma</span>
+              CSS framework, integrating various templates from their docs.
+            </p>
+            <h6 class="title is-6">Libraries</h6>
+            <p>
+              The only library we used, apart from various required node packages required for Angular, was <span
+                class="pink">mssql</span> which
+              allowed us to interact with a SQL server through Node.js. The mssql package, referred to in the official
+              Microsoft documentation,
+              is essentially a driver that manages the connection between the Node.js application and the SQL server.
+              All of the function calls
+              in the library are made asynchronously, which proved to be a challenge when building our API.
+            </p>
+            <h6 class="title is-6">Utilization</h6>
+            <p>
+              Our Angular application is currently being hosted on an AWS S3 bucket with static web page hosting
+              enabled. Certain features require calls to the SQL server running on Azure i.e. user authentication,
+              favorited items, user feed, forums. Since we are unable to access the database directly through Angular,
+              we make HTTP requests to our API hosted on Heroku. The data is passed from the Angular app to the Node.js
+              app as JSON objects.
+              The request is routed within the Node.js application
+              to either post or retrieve the requested information. The Node.js app establishes a connection to the
+              SQL server on Azure and executes a stored procedure pertaining to the request. The API closes the
+              connection
+              and returns the data as a JSON object to the Angular application. The JSON is parsed and used to generate
+              an object within the Angular application. That data is then used accordingly.
             </p>
           </div>
         </div>
@@ -173,42 +205,9 @@
     <div class="hero-body">
       <div class="container">
         <div class="content">
-          <h4 class="title is-4">Quick Start</h4>
-          <div class="main-text">
-            <p> Nunc elementum cursus tincidunt. Praesent sit amet ex sapien. Curabitur auctor nunc at elit rutrum
-              vestibulum. Etiam at lacus ante. Phasellus scelerisque nibh id leo interdum, nec ultrices elit placerat.
-              Etiam molestie mi a volutpat ultricies. Morbi vel pellentesque enim, a blandit enim. Cras egestas sapien
-              felis, sit amet accumsan erat efficitur sed.</p>
-            <p>Praesent scelerisque leo magna, et tincidunt nunc dictum vitae. Proin finibus odio in massa lobortis, eu
-              sodales urna ornare. Proin eu vestibulum libero, ultrices laoreet velit. Vestibulum felis nisl, convallis
-              nec tincidunt in, bibendum sed magna. Fusce mi ligula, consequat a nibh at, luctus fermentum lacus.
-              Vivamus ultricies augue nec nisi fermentum faucibus. Phasellus sollicitudin est neque. Phasellus aliquam a
-              ipsum eget mattis. Duis ut consequat sem, in sagittis lectus. Etiam et condimentum urna, nec placerat
-              urna. Nulla pharetra libero vitae hendrerit pretium. Praesent tellus mauris, facilisis et neque id,
-              fermentum consequat erat. Ut aliquet erat id orci aliquet ornare. Morbi in mi mollis, tempor velit ut,
-              suscipit enim. Ut at magna magna.</p>
-          </div>
+          <h4 class="title is-4">Database Design</h4>
           <div class="pre-wrapper">
-            <pre>
-    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mllis.&lt;/p&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;	      
-    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mllis.&lt;/p&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
-  </pre>
+            <img src="../../../../assets/database_design.png" alt="Database Design" />
           </div>
         </div>
       </div>
@@ -224,48 +223,9 @@
     <div class="hero-body">
       <div class="container">
         <div class="content">
-          <h4 class="title is-4">Methods</h4>
-          <div class="main-text">
-            <p> Nunc elementum cursus tincidunt. Praesent sit amet ex sapien. Curabitur auctor nunc at elit rutrum
-              vestibulum. Etiam at lacus ante. Phasellus scelerisque nibh id leo interdum, nec ultrices elit placerat.
-              Etiam molestie mi a volutpat ultricies. Morbi vel pellentesque enim, a blandit enim. Cras egestas sapien
-              felis, sit amet accumsan erat efficitur sed.</p>
-            <p>Praesent scelerisque leo magna, et tincidunt nunc dictum vitae. Proin finibus odio in massa lobortis, eu
-              sodales urna ornare. Proin eu vestibulum libero, ultrices laoreet velit. Vestibulum felis nisl, convallis
-              nec tincidunt in, bibendum sed magna. Fusce mi ligula, consequat a nibh at, luctus fermentum lacus.
-              Vivamus ultricies augue nec nisi fermentum faucibus. Phasellus sollicitudin est neque. Phasellus aliquam a
-              ipsum eget mattis. Duis ut consequat sem, in sagittis lectus. Etiam et condimentum urna, nec placerat
-              urna. Nulla pharetra libero vitae hendrerit pretium. Praesent tellus mauris, facilisis et neque id,
-              fermentum consequat erat. Ut aliquet erat id orci aliquet ornare. Morbi in mi mollis, tempor velit ut,
-              suscipit enim. Ut at magna magna.</p>
-          </div>
+          <h4 class="title is-4">System Design</h4>
           <div class="pre-wrapper">
-            <p><code>somemethod.sub.sub</code></p>
-            <pre>
-    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mllis.&lt;/p&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
-  </pre>
-          </div>
-          <div class="pre-wrapper">
-            <p><code>anothermethod.sub.sub.orange</code></p>
-            <pre>
-    &lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-    &lt;title&gt;Hello World&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-    &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mllis.&lt;/p&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;
-  </pre>
+            <img src="../../../../assets/class_model.png" alt="Class Model" />
           </div>
         </div>
       </div>
