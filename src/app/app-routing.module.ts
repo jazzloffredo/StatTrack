@@ -15,6 +15,10 @@ const routes: Routes = [
     loadChildren: './modules/player/player.module#PlayerModule'
   },
   {
+    path: 'leaderboards',
+    loadChildren: './modules/leaderboard/leaderboard.module#LeaderboardModule'
+  },
+  {
     path: 'error',
     loadChildren: './modules/error/error.module#ErrorModule'
   },

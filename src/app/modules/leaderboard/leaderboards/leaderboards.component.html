@@ -1,0 +1,44 @@
+<section class="section">
+  <div class="buttons is-centered are-medium">
+    <button id="smallest" class="button" (click)="leaderboardChange($event)">Smallest</button>
+    <button id="largest" class="button" (click)="leaderboardChange($event)">Largest</button>
+    <button id="shortest" class="button" (click)="leaderboardChange($event)">Shortest</button>
+    <button id="tallest" class="button" (click)="leaderboardChange($event)">Tallest</button>
+    <button id="hbp" class="button" (click)="leaderboardChange($event)">Hit by Pitches</button>
+    <button id="wild" class="button" (click)="leaderboardChange($event)">Wild Pitcher</button>
+    <button id="strikeouts" class="button" (click)="leaderboardChange($event)">Strikeouts</button>
+    <button id="bases" class="button" (click)="leaderboardChange($event)">Stolen Bases</button>
+    <button id="homeruns" class="button" (click)="leaderboardChange($event)">Homeruns</button>
+  </div>
+  <div class="container">
+      <table class="table is-hoverable is-narrow is-striped is-bordered display-inline">
+        <thead>
+          <tr>
+            <th mat-sort-header="id">Rank</th>
+            <th mat-sort-header="name">Name</th>
+            <th id="stat" mat-sort-header="active">Weight</th>
+            <th mat-sort-header="games">Favorite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let player of displayedPlayers">
+            <td>{{player.rank}}</td>
+            <td>{{player.name}}</td>
+            <td style="text-align: center;">{{player.stat}}</td>
+            <td style="text-align: center;">
+              <button *ngIf="!player.favorite" class="button" (click)="favoritePlayer($event, player)">
+                <span class="icon is-small is-center">
+                    <i class="far fa-star"></i>
+                </span>
+              </button>
+              <button *ngIf="player.favorite" class="button" (click)="unFavoritePlayer($event, player)">
+                  <span class="icon is-small is-center">
+                      <i class="fas fa-star"></i>
+                  </span>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+</section>

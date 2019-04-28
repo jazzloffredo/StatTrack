@@ -11,3 +11,5 @@ export * from './models/team/team';
 
 // Player Classes
 export * from './models/player/player';
+export * from './models/player/leaderboard-player';
+
