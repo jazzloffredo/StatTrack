@@ -34,6 +34,11 @@ export class AuthService {
     return this.http.post(API + '/auth/attemptLogin', loginUser, HEADERS);
   }
 
+  updatePassword(username: string, password: string) {
+    const updatePasswordUser = new LoginUser(username, password);
+    return this.http.post<boolean>(API + '/auth/updatePassword', updatePasswordUser, HEADERS);
+  }
+
   setIsLoggedIn(isLoggedIn: boolean) {
     sessionStorage.setItem('isLoggedIn', String(isLoggedIn));
     this.isLoggedIn.next(isLoggedIn);
