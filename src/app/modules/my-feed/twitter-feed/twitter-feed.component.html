@@ -1,15 +1,15 @@
 <article class="media" *ngFor="let tweet of returnedTweets">
   <figure class="media-left">
     <p class="image is-64x64">
-      <img src="https://bulma.io/images/placeholders/128x128.png">
+      <img src={{tweet.profileImageUrl}}>
     </p>
   </figure>
   <div class="media-content">
     <div class="content">
       <p>
-        <strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+        <strong>{{tweet.userRealName}}</strong> <small>@{{tweet.userScreenName}}</small> <small>{{tweet.postedDate}}</small>
         <br>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.
+        {{tweet.text}}
       </p>
     </div>
     <nav class="level is-mobile">
@@ -25,8 +25,5 @@
         </a>
       </div>
     </nav>
-  </div>
-  <div class="media-right">
-    <button class="delete"></button>
   </div>
 </article>
