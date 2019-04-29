@@ -1,0 +1,15 @@
+@import "bulma/sass/utilities/_all.sass";
+
+// Modify Variables
+$modal-content-width: 400px;
+
+@import '../../../../../node_modules/bulma/sass/components/modal.sass';
+
+
+.add-top-margin {
+    margin-top: 10px;
+}
+
+.justify-center {
+    justify-content: center;
+}

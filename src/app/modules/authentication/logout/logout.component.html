@@ -1,0 +1,18 @@
+<section class="section">
+    <!-- MODAL CONTENT -->
+    <div [ngClass]="modalClass">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+            <section class="modal-card-body">
+                <p class="has-text-centered">You have been logged out of StatTrackDB!</p>
+            </section>
+            <footer class="modal-card-foot justify-center">
+                <button class="button is-success" (click)="gotoHome()">
+                    <span class="icon is-small is-center">
+                        <i class="fas fa-check"></i>
+                    </span>
+                </button>
+            </footer>
+        </div>
+    </div>
+</section>

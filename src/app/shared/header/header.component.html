@@ -39,7 +39,7 @@
         </a>
 
         <div class="navbar-dropdown">
-          <a class="navbar-item">
+          <a class="navbar-item" [routerLink]="['/home']">
             About
           </a>
           <a class="navbar-item" [routerLink]="['']">
@@ -62,7 +62,7 @@
           <a class="button is-light" *ngIf="!displayLogout" [routerLink]="['/auth/login']">
             Log in
           </a>
-          <a class="button is-primary" *ngIf="displayLogout" [routerLink]="['']" (click)="logout()">
+          <a class="button is-primary" *ngIf="displayLogout" (click)="logout()">
             <strong>Log out</strong>
           </a>
         </div>

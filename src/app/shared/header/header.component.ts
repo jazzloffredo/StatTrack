@@ -3,6 +3,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   displayLogout = false;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService,
+              private router: Router) { }
 
   ngOnInit() {
     this.authService.getIsLoggedIn()
@@ -28,5 +30,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.unsubscribe.next(true);
     this.unsubscribe.complete();
+  }
+
+  logout() {
+    this.authService.setIsLoggedIn(false);
+    this.authService.setUsername(undefined);
+    this.router.navigate(['/auth/logout']);
   }
 }
