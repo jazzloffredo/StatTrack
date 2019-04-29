@@ -1,0 +1,137 @@
+<section class="section">
+  <div>
+    <button class="button is-large" (click)="gotoPlayers()">
+      <span class="icon is-large is-center">
+        <i class="fas fa-arrow-alt-circle-left"></i>
+      </span>
+    </button>
+    <span class="is-size-5"><strong>&nbsp;&nbsp;&nbsp;{{playerName}}</strong></span>
+  </div>
+  <div class="buttons are-medium add-top-border">
+    <button id="batting" class="button is-primary" (click)="statTypeChange($event)">Batting</button>
+    <button id="fielding" class="button" (click)="statTypeChange($event)">Fielding</button>
+    <button id="pitching" class="button" (click)="statTypeChange($event)">Pitching</button>
+  </div>
+  <div *ngIf="isDisplayBatting">
+    <div *ngIf="battingSeasons.length === 0" class="add-top-border">
+      <strong>No batting data to display.</strong>
+    </div>
+    <table *ngIf="battingSeasons.length > 0" matSort (matSortChange)="sortDataBatting($event)"
+      class="table is-hoverable is-narrow is-striped is-bordered">
+      <thead>
+        <tr>
+          <th mat-sort-header="year">Year</th>
+          <th mat-sort-header="teamName">Team</th>
+          <th mat-sort-header="games">&nbsp;&nbsp;&nbsp;Games</th>
+          <th mat-sort-header="atBats">&nbsp;&nbsp;&nbsp;A.B.</th>
+          <th mat-sort-header="hits">&nbsp;&nbsp;&nbsp;Hits</th>
+          <th mat-sort-header="battingAvg">&nbsp;&nbsp;&nbsp;Avg</th>
+          <th mat-sort-header="rbi">&nbsp;&nbsp;&nbsp;RBIs</th>
+          <th mat-sort-header="baseOnBalls">&nbsp;&nbsp;&nbsp;B.o.B</th>
+          <th mat-sort-header="hittingStats">&nbsp;&nbsp;&nbsp;2B/3B/HRs</th>
+          <th mat-sort-header="strikeouts">&nbsp;&nbsp;&nbsp;Strikeouts</th>
+          <th mat-sort-header="runs">&nbsp;&nbsp;&nbsp;Runs</th>
+          <th mat-sort-header="stolenBases">&nbsp;&nbsp;&nbsp;S.B.</th>
+          <th mat-sort-header="hitByPitch">&nbsp;&nbsp;&nbsp;H.B.P</th>
+          <th mat-sort-header="sacFly">&nbsp;&nbsp;&nbsp;Sac Flys</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let season of battingSeasons">
+          <td>{{season.year}}</td>
+          <td>{{season.teamName}}</td>
+          <td style="text-align: center;">{{season.games}}</td>
+          <td style="text-align: center;">{{season.atBats}}</td>
+          <td style="text-align: center;">{{season.hits}}</td>
+          <td style="text-align: center;">{{season.battingAverage}}</td>
+          <td style="text-align: center;">{{season.RBIs}}</td>
+          <td style="text-align: center;">{{season.baseOnBalls}}</td>
+          <td style="text-align: center;">{{season.hittingStats}}</td>
+          <td style="text-align: center;">{{season.strikeouts}}</td>
+          <td style="text-align: center;">{{season.runs}}</td>
+          <td style="text-align: center;">{{season.stolenBases}}</td>
+          <td style="text-align: center;">{{season.hitByPitch}}</td>
+          <td style="text-align: center;">{{season.sacFly}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="isDisplayFielding">
+    <div *ngIf="fieldingSeasons.length === 0" class="add-top-border">
+      <strong>No fielding data to display.</strong>
+    </div>
+    <table *ngIf="fieldingSeasons.length > 0" matSort (matSortChange)="sortDataBatting($event)"
+      class="table is-hoverable is-narrow is-striped is-bordered">
+      <thead>
+        <tr>
+          <th mat-sort-header="year">Year</th>
+          <th mat-sort-header="teamName">Team</th>
+          <th mat-sort-header="position">&nbsp;&nbsp;&nbsp;Position</th>
+          <th mat-sort-header="games">&nbsp;&nbsp;&nbsp;Games</th>
+          <th mat-sort-header="started">&nbsp;&nbsp;&nbsp;Starts</th>
+          <th mat-sort-header="putous">&nbsp;&nbsp;&nbsp;Putouts</th>
+          <th mat-sort-header="assists">&nbsp;&nbsp;&nbsp;Assists</th>
+          <th mat-sort-header="hittingStats">&nbsp;&nbsp;&nbsp;Errors</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let season of fieldingSeasons">
+          <td>{{season.year}}</td>
+          <td>{{season.teamName}}</td>
+          <td style="text-align: center;">{{season.position}}</td>
+          <td style="text-align: center;">{{season.games}}</td>
+          <td style="text-align: center;">{{season.gamesStarted}}</td>
+          <td style="text-align: center;">{{season.putouts}}</td>
+          <td style="text-align: center;">{{season.assists}}</td>
+          <td style="text-align: center;">{{season.errors}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="isDisplayPitching">
+    <div *ngIf="pitchingSeasons.length === 0" class="add-top-border">
+      <strong>No pitching data to display.</strong>
+    </div>
+    <table *ngIf="pitchingSeasons.length > 0" matSort (matSortChange)="sortDataPitching($event)"
+      class="table is-hoverable is-narrow is-striped is-bordered">
+      <thead>
+        <tr>
+          <th mat-sort-header="year">Year</th>
+          <th mat-sort-header="teamName">Team</th>
+          <th mat-sort-header="wins">&nbsp;&nbsp;&nbsp;W</th>
+          <th mat-sort-header="losses">&nbsp;&nbsp;&nbsp;L</th>
+          <th mat-sort-header="games">&nbsp;&nbsp;&nbsp;G.S./G.F.</th>
+          <th mat-sort-header="completeGames">&nbsp;&nbsp;&nbsp;C.G.</th>
+          <th mat-sort-header="shutouts">&nbsp;&nbsp;&nbsp;Shutouts</th>
+          <th mat-sort-header="saves">&nbsp;&nbsp;&nbsp;Saves</th>
+          <th mat-sort-header="hitsAllowed">&nbsp;&nbsp;&nbsp;Hits</th>
+          <th mat-sort-header="homerunsAllowed">&nbsp;&nbsp;&nbsp;HRs</th>
+          <th mat-sort-header="earnedRuns">&nbsp;&nbsp;&nbsp;E.R.</th>
+          <th mat-sort-header="ERA">&nbsp;&nbsp;&nbsp;E.R.A</th>
+          <th mat-sort-header="walks">&nbsp;&nbsp;&nbsp;Walks</th>
+          <th mat-sort-header="strikeouts">&nbsp;&nbsp;&nbsp;Ks</th>
+          <th mat-sort-header="opponentAverage">&nbsp;&nbsp;&nbsp;Opp. Avg.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let season of pitchingSeasons">
+          <td>{{season.year}}</td>
+          <td>{{season.teamName}}</td>
+          <td style="text-align: center;">{{season.wins}}</td>
+          <td style="text-align: center;">{{season.losses}}</td>
+          <td style="text-align: center;">{{season.games}}</td>
+          <td style="text-align: center;">{{season.completeGames}}</td>
+          <td style="text-align: center;">{{season.shutouts}}</td>
+          <td style="text-align: center;">{{season.saves}}</td>
+          <td style="text-align: center;">{{season.hitsAllowed}}</td>
+          <td style="text-align: center;">{{season.homerunsAllowed}}</td>
+          <td style="text-align: center;">{{season.earnedRuns}}</td>
+          <td style="text-align: center;">{{season.ERA}}</td>
+          <td style="text-align: center;">{{season.walks}}</td>
+          <td style="text-align: center;">{{season.strikeouts}}</td>
+          <td style="text-align: center;">{{season.opponentAverage}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

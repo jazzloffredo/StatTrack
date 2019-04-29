@@ -6,9 +6,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { PlayerRoutingModule } from './player-routing.module';
 
 import { PlayersComponent } from './players/players.component';
+import { PlayerComponent } from './player/player.component';
 
 @NgModule({
-  declarations: [PlayersComponent],
+  declarations: [PlayersComponent, PlayerComponent],
   imports: [
     CommonModule,
     MatSortModule,

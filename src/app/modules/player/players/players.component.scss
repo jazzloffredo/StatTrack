@@ -1,3 +1,8 @@
 .select.is-purple:after {
     border-color: #512888 !important;
 }
+
+$link: #512888;
+
+@import '../../../../../node_modules/bulma/sass/utilities/_all.sass';
+@import '../../../../../node_modules/bulma/sass/base/_all.sass';

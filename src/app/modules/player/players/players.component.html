@@ -70,8 +70,8 @@
       </thead>
       <tbody>
         <tr *ngFor="let player of displayedPlayers">
-          <td>{{player.lastName}}</td>
-          <td>{{player.firstName}}</td>
+          <td><a [routerLink]="['/players', player.playerID]">{{player.lastName}}</a></td>
+          <td><a [routerLink]="['/players', player.playerID]">{{player.firstName}}</a></td>
           <td style="text-align: center;">{{player.height}}</td>
           <td style="text-align: center;">{{player.totalGames}}</td>
           <td style="text-align: center;">{{player.totalRuns}}</td>
