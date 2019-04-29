@@ -26,6 +26,10 @@ export class TeamsService {
     return this.http.get<string[]>(API + '/team/retrieveFavoriteTeams/' + username, HEADERS);
   }
 
+  retrieveFavoriteTeamNames(username: string) {
+    return this.http.get<string[]>(API + '/team/retrieveFavoriteTeamNames/' + username, HEADERS);
+  }
+
   addFavoriteTeamForUser(username: string, teamID: string): Observable<boolean> {
     const addTeamFavUser = new UserFavoriteTeam(username, teamID);
     return this.http.post<boolean>(API + '/team/addFavoriteTeamForUser', addTeamFavUser, HEADERS);
