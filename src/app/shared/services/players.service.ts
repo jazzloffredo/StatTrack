@@ -38,6 +38,10 @@ export class PlayersService {
     return this.http.get<string[]>(API + '/player/retrieveFavoritePlayers/' + username, HEADERS);
   }
 
+  retrieveFavoritePlayerNames(username: string) {
+    return this.http.get<string[]>(API + '/player/retrieveFavoritePlayerNames/' + username, HEADERS);
+  }
+
   mapPlayerIdToName(playerID: string) {
     return this.http.get<string[]>(API + '/player/mapPlayerIdToName/' + playerID, HEADERS);
   }

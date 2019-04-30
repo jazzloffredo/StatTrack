@@ -7,6 +7,10 @@ const routes: Routes = [
     loadChildren: './modules/authentication/authentication.module#AuthenticationModule'
   },
   {
+    path: 'my-feed',
+    loadChildren: './modules/my-feed/my-feed.module#MyFeedModule'
+  },
+  {
     path: 'teams',
     loadChildren: './modules/team/team.module#TeamModule'
   },
