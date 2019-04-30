@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Tweet } from '../models/twitter/tweet';
-import { UserTwitterFavorites } from '../models/user-twitter-favorites';
+import { UserTwitterFavorites } from '../models/twitter/user-twitter-favorites';
 import { API, HEADERS } from 'src/environments/environment';
 
 @Injectable({
@@ -15,8 +15,9 @@ export class TwitterService {
   retrieveTweetsForName(userFavNames: UserTwitterFavorites): Tweet[] {
     const retTweets: Tweet[] = [];
 
-    for (const playerName of userFavNames.userPlayerNames) {
-      this.http.get<Tweet[]>(API + '/retrieveTweetsForName/' + playerName, HEADERS)
+    for (let playerName of userFavNames.userPlayerNames) {
+      playerName = playerName.replace(' ', '-');
+      this.http.get<Tweet[]>(API + '/twitter/retrieveTweetsForName/' + playerName, HEADERS)
         .subscribe((data) => {
           for (const tweet of data) {
             retTweets.push(tweet);
@@ -24,8 +25,9 @@ export class TwitterService {
         });
     }
 
-    for (const teamName of userFavNames.userTeamNames) {
-      this.http.get<Tweet[]>(API + '/retrieveTweetsForName/' + teamName, HEADERS)
+    for (let teamName of userFavNames.userTeamNames) {
+      teamName = teamName.replace(' ', '-');
+      this.http.get<Tweet[]>(API + '/twitter/retrieveTweetsForName/' + teamName, HEADERS)
         .subscribe((data) => {
           for (const tweet of data) {
             retTweets.push(tweet);
